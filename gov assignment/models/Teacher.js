@@ -13,15 +13,14 @@ var Teacher = {
     addSuspendStudent: function (student, callback) {
         return db.query("INSERT INTO school_suspend_student (studentEmail) VALUES (?) ", [student.student], callback);
     },
-    getStudentRecipients: function (teacher, studentList, callback) {
+    getStudentRecipients: function (teacher, callback) {
         console.log('inside model');
         console.log(teacher);
-        console.log(studentList);
         console.log('hasdjhasjkdhasd here');
         // var result = db.query("select ts.studentEmail from school_teacher_student ts, school_suspend_student st where ts.studentEmail != st.studentEmail and ts.teacherEmail = ? and ts.studentEmail in (?) ", [teacher, studentList], callback);
         // console.log(result);
 
-        return db.query("select ts.studentEmail from school_teacher_student ts, school_suspend_student st where ts.studentEmail != st.studentEmail and ts.teacherEmail = ? or ts.studentEmail in (?) ", [teacher, studentList], callback);
+        return db.query("select ts.studentEmail from school_teacher_student ts, school_suspend_student st where ts.studentEmail != st.studentEmail and ts.teacherEmail = ? ", [teacher], callback);
     },
     registerStudent: function (Teacher, callback) {
         //console.log(Teacher);
@@ -36,39 +35,6 @@ var Teacher = {
         }
         console.log(totalRecord);
         return db.query("INSERT INTO school_teacher_student (teacherEmail,studentEmail) VALUES ?", [totalRecord], callback);
-
-        // db.getConnection(function (err, conn) {
-        //     conn.beginTransaction(function (err) {
-        //         if (err) {
-        //             throw err;
-        //         }
-
-        //         console.log(i);
-        //         console.log(Teacher.students[i]);
-        //         conn.query("Insert into school_teacher_student values ?", [totalRecord], callback);
-        //         if (err) {
-        //             conn.rollback(function () {
-        //                 console.log('should be throwing here');
-        //                 throw err;
-        //             });
-        //         }
-
-
-        //         conn.commit(function (err) {
-        //             if (err) {
-        //                 conn.rollback(function () {
-        //                     console.log('roll here');
-        //                     throw err;
-        //                 })
-        //             }
-        //         })
-        //         console.log('transaction complete');
-
-        //     })
-
-        // })
-
-        // return Teacher;
     }
 };
 module.exports = Teacher;  

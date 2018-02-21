@@ -2,36 +2,11 @@ var express = require('express');
 var router = express.Router();
 var Teacher = require('../models/Teacher');
 
-// router.get('/', function (req, res, next) {
-//     console.log('select all here');
-//     Teacher.getAllTasks(function (err, rows) {
-//         if (err) {
-//             res.json(err);
-//         } else {
-//             console.log(rows);
-//             res.json(rows);
-//         }
-//     });
-// });
-
-// router.get('/:teacherEmail?', function (req, res, next) {
-//     console.log(req.params);
-//         Teacher.getTaskById(req.params.teacherEmail, function (err, rows) {
-//             if (err) {
-//                 res.json(err);
-//             } else {
-//                 res.json(rows);
-//             }
-//         });
-// });
-
-
 router.get('/commonstudents', function (req, res, next) {
     console.log(req.query);
     console.log(req.query.teacher);
     // query string was found
     if (req.query.teacher != undefined) {
-        console.log('get specify student based on teacher');
         Teacher.getStudents(req.query.teacher, function (err, rows) {
             if (err) {
                 res.json(err);
@@ -45,7 +20,7 @@ router.get('/commonstudents', function (req, res, next) {
                     students['students'] = bodyContent;
                     res.status(200).json(students);
                 }
-                else{
+                else {
                     res.status(204);
                     res.json(rows);
                 }
@@ -53,6 +28,7 @@ router.get('/commonstudents', function (req, res, next) {
             }
         });
     }
+    // just an extra feature
     else {
         Teacher.getAllStudents(function (err, rows) {
             if (err) {
@@ -70,11 +46,14 @@ router.get('/commonstudents', function (req, res, next) {
 router.post('/register', function (req, res, next) {
     Teacher.registerStudent(req.body, function (err, count) {
         if (err) {
-            console.log(err);
-            res.status(500);
-            res.json(err);
+            if (err.code == 'ER_DUP_ENTRY') {
+                res.status(409);
+            } else {
+                res.status(500);
+            }
+            res.json({});
         } else {
-            res.json(req.body); //or return count for 1 & 0  
+            res.json(req.body);
         }
     });
 });
@@ -83,11 +62,14 @@ router.post('/register', function (req, res, next) {
 router.post('/suspend', function (req, res, next) {
     Teacher.addSuspendStudent(req.body, function (err, count) {
         if (err) {
-            console.log(err.code);
-            res.status(500);
-            res.json(err);
+            if (err.code == 'ER_DUP_ENTRY') {
+                res.status(409);
+            } else {
+                res.status(500);
+            }
+            res.json({});
         } else {
-            res.json(req.body); //or return count for 1 & 0  
+            res.json(req.body);
         }
     });
 });
@@ -123,7 +105,7 @@ router.post('/retrievefornotifications', function (req, res, next) {
         }
     }
 
-    Teacher.getStudentRecipients(req.body.teacher, studentEmailList, function (err, count) {
+    Teacher.getStudentRecipients(req.body.teacher, function (err, count) {
         if (err) {
             console.log(err);
             res.status(500);
@@ -133,6 +115,9 @@ router.post('/retrievefornotifications', function (req, res, next) {
             var bodyContent = [];
             for (var x = 0; x < count.length; x++) {
                 bodyContent.push(count[x].studentEmail);
+            }
+            for (var u = 0; u < studentEmailList.length; u++) {
+                bodyContent.push(studentEmailList[u]);
             }
             console.log(bodyContent);
             recipients['recipients'] = bodyContent;
