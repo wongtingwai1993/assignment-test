@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Teacher = require('../models/Teacher');
+var emailValidator = require('email-validator')
 
 router.get('/commonstudents', function (req, res, next) {
     console.log(req.query);
@@ -45,6 +46,15 @@ router.get('/commonstudents', function (req, res, next) {
 
 router.post('/register', function (req, res, next) {
     Teacher.registerStudent(req.body, function (err, count) {
+        // validate for the email
+        for (var x = 0; x < req.body.students.length; x++) {
+            if (!emailValidator.validate(req.body.students[x])) {
+                res.status(422);
+                res.json(req.body.students[x]);
+                return;
+            }   
+        }
+
         if (err) {
             if (err.code == 'ER_DUP_ENTRY') {
                 res.status(409);
@@ -81,16 +91,23 @@ router.post('/retrievefornotifications', function (req, res, next) {
     var studentEmail = '';
     var studentEmailList = [];
 
+    // loop through string as char array to look for @
     for (var x = 0; x < req.body.notification.length; x++) {
         if (startWithMention) {
             studentEmail += req.body.notification.charAt(x);
             // first regex is @gmail and should end with .com
-            if (studentEmail.match('[@]{2,}')) {
+            var numberOfAt = studentEmail.match(/\@/g);
+
+            if (numberOfAt && numberOfAt.length > 1) {
                 console.log('invalid email address');
+                res.status(422);
+                res.json({});
                 return;
             }
             else if (studentEmail.length >= 50) {
-                console.log('error occur');
+                console.log('invalid email length');
+                res.status(422);
+                res.json({});
                 return;
             }
             else if (studentEmail.match('[@]{1,}[a-zA-Z]') && studentEmail.endsWith('.com')) {

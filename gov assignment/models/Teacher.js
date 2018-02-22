@@ -3,9 +3,6 @@ var Teacher = {
     getAllStudents: function (callback) {
         return  db.query("Select * from school_student", callback);
     },
-    getTaskById: function (teacherEmail, callback) {
-        return db.query("select * from school_teacher where teacherEmail=?", [teacherEmail], callback);
-    },
     getStudents: function (teacher, callback) {
         console.log('the value =' + teacher);
         return db.query("select studentEmail from school_teacher_student where teacherEmail in (?)", [teacher], callback);
