@@ -1,0 +1,116 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Assignment",
+		"_postman_id": "68677421-dc07-42df-0c8d-832d3ff304ec",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Teacher Student",
+			"request": {
+				"url": "http://52.74.59.158:8181/api/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"teacher\": \"teacherken5@gmail.com\",\r\n  \"students\":\r\n    [\r\n      \"studentjon28example.com\",\r\n      \"studentjon525@example.com\"\r\n    ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Teacher",
+			"request": {
+				"url": "http://52.74.59.158:8181/api/commonstudents",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List of student by teacher",
+			"request": {
+				"url": {
+					"raw": "http://52.74.59.158:8181/api/commonstudents?teacher=teacherken%40gmail.com",
+					"protocol": "http",
+					"host": [
+						"52",
+						"74",
+						"59",
+						"158"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"commonstudents"
+					],
+					"query": [
+						{
+							"key": "teacher",
+							"value": "teacherken%40gmail.com",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Suspend specify student",
+			"request": {
+				"url": "http://52.74.59.158:8181/api/suspend",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"student\" : \"studentmary1@gmail.com\"\r\n}\r\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get notification",
+			"request": {
+				"url": "http://52.74.59.158:8181/api/retrievefornotifications",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n  \"teacher\":  \"teacherken2@gmail.com\",\r\n  \"notification\": \"Hello students! @student@gmail.com\"\r\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

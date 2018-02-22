@@ -20,8 +20,8 @@ router.get('/commonstudents', function (req, res, next) {
                     for (var x = 0; x < rows.length; x++) {
                         bodyContent.push(rows[x].studentEmail);
                     }
-                    logger.info('Response set=' + bodyContent);
-                    students['students'] = bodyContent;
+                    logger.info('Response set=' + JSON.stringify(bodyContent));
+                    students['students'] = JSON.stringify(bodyContent);
                     res.status(200).json(students);
                 }
                 else {
@@ -41,7 +41,7 @@ router.get('/commonstudents', function (req, res, next) {
                 res.json(err);
             } else {
                 logger.info("/get all students is called...")
-                logger.info('Response set=' + rows);
+                logger.info('Response set=' + JSON.stringify(rows));
                 res.json(rows);
             }
         });
@@ -51,7 +51,7 @@ router.get('/commonstudents', function (req, res, next) {
 
 router.post('/register', function (req, res, next) {
     logger.info("/register is called...");
-    logger.info("request body="+ JSON.stringify(req.body));
+    logger.info("request body=" + JSON.stringify(req.body));
     Teacher.registerStudent(req.body, function (err, count) {
         // validate for the email
         for (var x = 0; x < req.body.students.length; x++) {
@@ -73,7 +73,7 @@ router.post('/register', function (req, res, next) {
             }
             res.json({});
         } else {
-            logger.info('Response set=' + req.body);
+            logger.info('Response set=' + JSON.stringify(req.body));
             res.json(req.body);
         }
     });
@@ -81,7 +81,7 @@ router.post('/register', function (req, res, next) {
 
 
 router.post('/suspend', function (req, res, next) {
-    logger.info('request body='+ JSON.stringify(req.body));
+    logger.info('request body=' + JSON.stringify(req.body));
     Teacher.addSuspendStudent(req.body, function (err, count) {
         if (err) {
             if (err.code == 'ER_DUP_ENTRY') {
@@ -93,13 +93,13 @@ router.post('/suspend', function (req, res, next) {
             }
             res.json({});
         } else {
-            logger.info('Response set=' + req.body);
+            logger.info('Response set=' + JSON.stringify(req.body));
             res.json(req.body);
         }
     });
 });
 router.post('/retrievefornotifications', function (req, res, next) {
-    logger.info('request body='+ JSON.stringify(req.body));
+    logger.info('request body=' + JSON.stringify(req.body));
     var startWithMention = false;
     var endWithMentionCheck = false;
     var endWithMention = '';
@@ -152,7 +152,7 @@ router.post('/retrievefornotifications', function (req, res, next) {
                 bodyContent.push(studentEmailList[u]);
             }
             recipients['recipients'] = bodyContent;
-            logger.info('Response set=' + recipients);
+            logger.info('Response set=' + JSON.stringify(recipients));
             res.json(recipients);
         }
     });
