@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var TeacherStudent = require('../models/TeacherStudent');
+var teacherStudent = require('../models/TeacherStudent');
 var emailUtil = require('../utils/EmailValidator');
 var logger = require("../logger");
 
@@ -10,7 +10,7 @@ router.get('/commonstudents', function (req, res, next) {
     logger.info("accepted query = " + JSON.stringify(req.query));
     // query string was found
     if (req.query.teacher != undefined) {
-        TeacherStudent.getStudents(req.query.teacher, function (err, rows) {
+        teacherStudent.getStudents(req.query.teacher, function (err, rows) {
             if (err) {
                 logger.error('error occur!' + err);
                 res.json(err);
@@ -37,7 +37,7 @@ router.get('/commonstudents', function (req, res, next) {
     }
     // just an extra feature
     else {
-        TeacherStudent.getAllStudents(function (err, rows) {
+        teacherStudent.getAllStudents(function (err, rows) {
             if (err) {
                 logger.info("error occur" + err);
                 res.json(err);
@@ -54,7 +54,7 @@ router.get('/commonstudents', function (req, res, next) {
 router.post('/register', function (req, res, next) {
     logger.info("/register is called...");
     logger.info("request body=" + JSON.stringify(req.body));
-    TeacherStudent.registerStudent(req.body, function (err, count) {
+    teacherStudent.registerStudent(req.body, function (err, count) {
         // validate for the email
         if (!emailUtil.validateEmail(req.body.teacher)) {
             logger.error("Invalid email is found!" + req.body.teacher);
@@ -96,7 +96,7 @@ router.post('/suspend', function (req, res, next) {
         res.json({});
         return;
     }
-    TeacherStudent.addSuspendStudent(req.body, function (err, count) {
+    teacherStudent.addSuspendStudent(req.body, function (err, count) {
         if (err) {
 
             logger.error("Unknown error!" + err);
@@ -148,7 +148,7 @@ router.post('/retrievefornotifications', function (req, res, next) {
         }
     }
 
-    TeacherStudent.getStudentRecipients(req.body.teacher, function (err, count) {
+    teacherStudent.getStudentRecipients(req.body.teacher, function (err, count) {
         if (err) {
             logger.error(err);
             res.status(500);
