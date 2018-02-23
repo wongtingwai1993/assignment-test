@@ -22,7 +22,7 @@ describe('test invalid email', () => {
 
 describe('test invalid email', () => {
     it("null should be invalid", function () {
-        expect(emailUtil.validateEmail('tasdasdsad')).equal(false);
+        expect(emailUtil.validateEmail(null)).equal(false);
     })
 })
 

@@ -1,0 +1,15 @@
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T06:26:29.584Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken2@gmail.com\"}","timestamp":"2018-02-23T06:26:29.587Z"}
+{"level":"info","message":"no student found...","timestamp":"2018-02-23T06:26:29.604Z"}
+{"level":"info","message":"/register is called...","timestamp":"2018-02-23T06:26:29.679Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"students\":[\"studentjon2111@example.com\",\"studentjon51211@example.com\"]}","timestamp":"2018-02-23T06:26:29.680Z"}
+{"level":"error","message":"Duplicate of entry!Error: ER_DUP_ENTRY: Duplicate entry 'teacherken5@gmail.com-studentjon2111@example.com' for key 'PRIMARY'","timestamp":"2018-02-23T06:26:29.689Z"}
+{"level":"info","message":"/register is called...","timestamp":"2018-02-23T06:26:29.706Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"students\":[\"studentjon2111@example.com\",\"studentjon51211@example.com\"]}","timestamp":"2018-02-23T06:26:29.707Z"}
+{"level":"error","message":"Duplicate of entry!Error: ER_DUP_ENTRY: Duplicate entry 'teacherken5@gmail.com-studentjon2111@example.com' for key 'PRIMARY'","timestamp":"2018-02-23T06:26:29.711Z"}
+{"level":"info","message":"request body={\"student\":\"studentTest123@gmail.com\"}","timestamp":"2018-02-23T06:26:29.743Z"}
+{"level":"info","message":"Response set={\"student\":\"studentTest123@gmail.com\"}","timestamp":"2018-02-23T06:26:29.746Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken2@gmail.com\",\"notification\":\"Hello students! @studentagnes@example.com @studentmiche@example.com\"}","timestamp":"2018-02-23T06:26:29.757Z"}
+{"level":"info","message":"updated studentEmailList = studentagnes@example.com","timestamp":"2018-02-23T06:26:29.758Z"}
+{"level":"info","message":"updated studentEmailList = studentagnes@example.com,studentmiche@example.com","timestamp":"2018-02-23T06:26:29.758Z"}
+{"level":"info","message":"Response set={\"recipients\":[\"studentagnes@example.com\",\"studentmiche@example.com\"]}","timestamp":"2018-02-23T06:26:29.762Z"}
