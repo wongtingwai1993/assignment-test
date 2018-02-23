@@ -20,6 +20,12 @@ describe('test invalid email', () => {
     })
 })
 
+describe('test invalid email', () => {
+    it("null should be invalid", function () {
+        expect(emailUtil.validateEmail('tasdasdsad')).equal(false);
+    })
+})
+
 describe('test invalid email length', () => {
     it("email should be invalid", function () {
         expect(emailUtil.validateEmail('isadfjoisdjfiosjfoiasjdfiosajdfiojsdiofjsidofsiodfjiosdjfiosdjsoisdjfiosdjfiosajdfiosjadfidasjofijdsaifojsadifojsdifdsiofjsoiadjfiosadjfisjfiosadjfiodsjfoisjdjdsiofjasdiofjiosadjfiosdjfisodjf@gmail.com')).equal(false);
