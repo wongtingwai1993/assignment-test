@@ -36,7 +36,7 @@ router.get('/commonstudents', function (req, res, next) {
             }
         });
     }
-    else{
+    else {
         res.status(404);
         res.json({});
     }
@@ -109,43 +109,22 @@ router.post('/retrievefornotifications', function (req, res, next) {
     var studentEmailList = [];
 
     // loop through string as char array to look for @
-    for (var x = 0; x < req.body.notification.length; x++) {
-        if (startWithMention) {
-            studentEmail += req.body.notification.charAt(x);
-            // first regex is @gmail and should end with .com
-            var numberOfAt = studentEmail.match(/\@/g);
-
-            if (numberOfAt && numberOfAt.length > 1) {
+    var spaceDelimiter = req.body.notification.split(" ");
+    console.log(spaceDelimiter);
+    logger.info(spaceDelimiter);
+    for (var x = 0; x < spaceDelimiter.length; x++) {
+        if (spaceDelimiter[x].charAt(0) === "@") {
+            var removeFirstAt =  spaceDelimiter[x].substring(1,spaceDelimiter[x].length);
+            if (emailUtil.validateEmail(removeFirstAt)) {
+                studentEmailList.push(removeFirstAt);
+                logger.info('updated studentEmailList = ' + studentEmailList);
+            }
+            else {
                 logger.error('Invalid email address=' + studentEmail);
                 res.status(422);
                 res.json({});
                 return;
             }
-            else if (studentEmail.length >= 255) {
-                logger.error('Invalid email length (255)=' + studentEmail);
-                res.status(422);
-                res.json({});
-                return;
-            }
-            else if (studentEmail.match('[@]{1,}[a-zA-Z]') && studentEmail.endsWith(' ')) {
-                console.log('current student email = ' + studentEmail);
-                if (emailUtil.validateEmail(studentEmail.trim())) {
-                    studentEmailList.push(studentEmail);
-                    startWithMention = false;
-                    studentEmail = '';
-                    logger.info('updated studentEmailList = ' + studentEmailList);
-                }
-                else {
-                    logger.error('Invalid email=' + studentEmail);
-                    res.status(422);
-                    res.json({});
-                    return;
-                }
-
-            }
-        }
-        if (!startWithMention && req.body.notification.charAt(x) === "@") {
-            startWithMention = true;
         }
     }
 
