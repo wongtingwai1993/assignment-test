@@ -7,6 +7,7 @@ var logger = require("../logger");
 // refactor to different classes when DB calls increase
 router.get('/commonstudents', function (req, res, next) {
     logger.info("/common students is called...")
+    console.log(req.query);
     logger.info("accepted query = " + JSON.stringify(req.query));
     // query string was found
     if (req.query.teacher != undefined) {
@@ -136,11 +137,21 @@ router.post('/retrievefornotifications', function (req, res, next) {
                 res.json({});
                 return;
             }
-            else if (studentEmail.match('[@]{1,}[a-zA-Z]') && studentEmail.endsWith('.com')) {
-                studentEmailList.push(studentEmail);
-                startWithMention = false;
-                studentEmail = '';
-                logger.info('updated studentEmailList = ' + studentEmailList);
+            else if (studentEmail.match('[@]{1,}[a-zA-Z]') && studentEmail.endsWith(' ')) {
+                console.log('current student email = ' + studentEmail);
+                if (emailUtil.validateEmail(studentEmail.trim())) {
+                    studentEmailList.push(studentEmail);
+                    startWithMention = false;
+                    studentEmail = '';
+                    logger.info('updated studentEmailList = ' + studentEmailList);
+                }
+                else {
+                    logger.error('Invalid email=' + studentEmail);
+                    res.status(422);
+                    res.json({});
+                    return;
+                }
+
             }
         }
         if (!startWithMention && req.body.notification.charAt(x) === "@") {

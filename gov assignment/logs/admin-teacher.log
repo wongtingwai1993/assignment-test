@@ -13,3 +13,99 @@
 {"level":"info","message":"updated studentEmailList = studentagnes@example.com","timestamp":"2018-02-23T06:26:29.758Z"}
 {"level":"info","message":"updated studentEmailList = studentagnes@example.com,studentmiche@example.com","timestamp":"2018-02-23T06:26:29.758Z"}
 {"level":"info","message":"Response set={\"recipients\":[\"studentagnes@example.com\",\"studentmiche@example.com\"]}","timestamp":"2018-02-23T06:26:29.762Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:16:04.752Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\":\"\"}","timestamp":"2018-02-23T07:16:04.758Z"}
+[{"student_email":"studentjon2111@example.com"},{"student_email":"studentjon28@example.com"},{"student_email":"studentjon51211@example.com"},{"student_email":"studentjon525@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"studentjon525@example.com\"]","timestamp":"2018-02-23T07:16:04.783Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:16:16.691Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\":\"\"}","timestamp":"2018-02-23T07:16:16.692Z"}
+[{"student_email":"studentjon2111@example.com"},{"student_email":"studentjon28@example.com"},{"student_email":"studentjon51211@example.com"},{"student_email":"studentjon525@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"studentjon525@example.com\"]","timestamp":"2018-02-23T07:16:16.698Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:18:39.174Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\":\"\"}","timestamp":"2018-02-23T07:18:39.185Z"}
+[{"student_email":"studentjon2111@example.com"},{"student_email":"studentjon28@example.com"},{"student_email":"studentjon51211@example.com"},{"student_email":"studentjon525@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"studentjon525@example.com\"]","timestamp":"2018-02-23T07:18:39.210Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:22:26.074Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:22:26.076Z"}
+[{"student_email":"studentjon2111@example.com"},{"student_email":"studentjon28@example.com"},{"student_email":"studentjon51211@example.com"},{"student_email":"studentjon525@example.com"},{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"studentjon525@example.com\",\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:22:26.083Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:23:27.260Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:23:27.269Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:23:27.303Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:23:28.203Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:23:28.207Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:23:28.213Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:23:34.139Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\"}","timestamp":"2018-02-23T07:23:34.142Z"}
+{"level":"info","message":"no student found...","timestamp":"2018-02-23T07:23:34.148Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:23:39.460Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\"}","timestamp":"2018-02-23T07:23:39.461Z"}
+{"level":"info","message":"no student found...","timestamp":"2018-02-23T07:23:39.464Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:24:46.632Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\"}","timestamp":"2018-02-23T07:24:46.633Z"}
+{"level":"info","message":"no student found...","timestamp":"2018-02-23T07:24:46.636Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:26:57.351Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\"}","timestamp":"2018-02-23T07:26:57.361Z"}
+{"level":"info","message":"no student found...","timestamp":"2018-02-23T07:26:57.388Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:28:30.685Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\"}","timestamp":"2018-02-23T07:28:30.696Z"}
+{"level":"info","message":"no student found...","timestamp":"2018-02-23T07:28:30.723Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:28:51.627Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:28:51.631Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:28:51.642Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:30:43.123Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:30:43.133Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:30:43.157Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:30:46.937Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\"}","timestamp":"2018-02-23T07:30:46.937Z"}
+[{"student_email":"studentjon2111@example.com"},{"student_email":"studentjon28@example.com"},{"student_email":"studentjon51211@example.com"},{"student_email":"studentjon525@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"studentjon525@example.com\"]","timestamp":"2018-02-23T07:30:46.943Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:30:54.085Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:30:54.087Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:30:54.093Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:31:05.173Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\",\"lala@gmail.com\"]}","timestamp":"2018-02-23T07:31:05.175Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:31:05.178Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:41:43.262Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\",\"lala@gmail.com\"]}","timestamp":"2018-02-23T07:41:43.271Z"}
+{"level":"info","message":"no student found...","timestamp":"2018-02-23T07:41:43.300Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:41:51.112Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:41:51.113Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:41:51.119Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:41:59.797Z"}
+{"level":"info","message":"accepted query = {\"teacher\":\"teacherken5@gmail.com\"}","timestamp":"2018-02-23T07:41:59.798Z"}
+[{"student_email":"studentjon2111@example.com"},{"student_email":"studentjon28@example.com"},{"student_email":"studentjon51211@example.com"},{"student_email":"studentjon525@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"studentjon525@example.com\"]","timestamp":"2018-02-23T07:41:59.802Z"}
+{"level":"info","message":"/common students is called...","timestamp":"2018-02-23T07:42:08.035Z"}
+{"level":"info","message":"accepted query = {\"teacher\":[\"teacherken5@gmail.com\",\"teacherTest@gmaill.com\"]}","timestamp":"2018-02-23T07:42:08.036Z"}
+[{"student_email":"studentjon28@example.com"}]
+{"level":"info","message":"Response set=[\"studentjon28@example.com\"]","timestamp":"2018-02-23T07:42:08.040Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com\"}","timestamp":"2018-02-23T07:45:05.648Z"}
+{"level":"info","message":"Response set={\"recipients\":[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\"]}","timestamp":"2018-02-23T07:45:05.677Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com \"}","timestamp":"2018-02-23T07:45:16.263Z"}
+{"level":"error","message":"Invalid email=student@gmail.com ","timestamp":"2018-02-23T07:45:16.264Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com \"}","timestamp":"2018-02-23T07:46:09.069Z"}
+{"level":"error","message":"Invalid email=student@gmail.com ","timestamp":"2018-02-23T07:46:09.076Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com \"}","timestamp":"2018-02-23T07:46:38.745Z"}
+{"level":"info","message":"updated studentEmailList = student@gmail.com ","timestamp":"2018-02-23T07:46:38.754Z"}
+{"level":"info","message":"Response set={\"recipients\":[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"student@gmail.com \"]}","timestamp":"2018-02-23T07:46:38.783Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com\"}","timestamp":"2018-02-23T07:46:49.805Z"}
+{"level":"info","message":"Response set={\"recipients\":[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\"]}","timestamp":"2018-02-23T07:46:49.811Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com \"}","timestamp":"2018-02-23T07:46:53.954Z"}
+{"level":"info","message":"updated studentEmailList = student@gmail.com ","timestamp":"2018-02-23T07:46:53.955Z"}
+{"level":"info","message":"Response set={\"recipients\":[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"student@gmail.com \"]}","timestamp":"2018-02-23T07:46:53.959Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com \"}","timestamp":"2018-02-23T07:47:57.893Z"}
+{"level":"info","message":"updated studentEmailList = student@gmail.com ","timestamp":"2018-02-23T07:47:57.895Z"}
+{"level":"info","message":"Response set={\"recipients\":[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"student@gmail.com \"]}","timestamp":"2018-02-23T07:47:57.897Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com \"}","timestamp":"2018-02-23T07:48:15.440Z"}
+{"level":"error","message":"Invalid email=student@gmail.com ","timestamp":"2018-02-23T07:48:15.448Z"}
+{"level":"info","message":"request body={\"teacher\":\"teacherken5@gmail.com\",\"notification\":\"Hello students! @student@gmail.com \"}","timestamp":"2018-02-23T07:48:24.941Z"}
+{"level":"info","message":"updated studentEmailList = student@gmail.com ","timestamp":"2018-02-23T07:48:24.952Z"}
+{"level":"info","message":"Response set={\"recipients\":[\"studentjon2111@example.com\",\"studentjon28@example.com\",\"studentjon51211@example.com\",\"student@gmail.com \"]}","timestamp":"2018-02-23T07:48:24.975Z"}
