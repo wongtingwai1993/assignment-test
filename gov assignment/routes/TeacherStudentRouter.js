@@ -114,7 +114,7 @@ router.post('/retrievefornotifications', function (req, res, next) {
     logger.info(spaceDelimiter);
     for (var x = 0; x < spaceDelimiter.length; x++) {
         if (spaceDelimiter[x].charAt(0) === "@") {
-            var removeFirstAt =  spaceDelimiter[x].substring(1,spaceDelimiter[x].length);
+            var removeFirstAt = spaceDelimiter[x].substring(1, spaceDelimiter[x].length);
             if (emailUtil.validateEmail(removeFirstAt)) {
                 studentEmailList.push(removeFirstAt);
                 logger.info('updated studentEmailList = ' + studentEmailList);
@@ -139,8 +139,13 @@ router.post('/retrievefornotifications', function (req, res, next) {
             for (var x = 0; x < count.length; x++) {
                 bodyContent.push(count[x].student_email);
             }
+            console.log('er =' + studentEmailList);
             for (var u = 0; u < studentEmailList.length; u++) {
-                bodyContent.push(studentEmailList[u]);
+                console.log(bodyContent);
+                console.log(studentEmailList[u]);
+                if (bodyContent.indexOf(studentEmailList[u]) < 0) {
+                    bodyContent.push(studentEmailList[u]);
+                }
             }
             recipients['recipients'] = bodyContent;
             logger.info('Response set=' + JSON.stringify(recipients));
