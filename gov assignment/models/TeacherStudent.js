@@ -1,8 +1,6 @@
 var db = require('../dbconnection'); //reference of dbconnection.js  
 var TeacherStudent = {
-    getAllStudents: function (callback) {
-        return db.query("Select * from school_student", callback);
-    },
+    
     getStudents: function (teacher, callback) {
         console.log('the value =' + teacher);
         console.log('the length =' + teacher.length);

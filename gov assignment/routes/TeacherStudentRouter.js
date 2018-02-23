@@ -36,20 +36,10 @@ router.get('/commonstudents', function (req, res, next) {
             }
         });
     }
-    // just an extra feature
-    else {
-        teacherStudent.getAllStudents(function (err, rows) {
-            if (err) {
-                logger.info("error occur" + err);
-                res.json(err);
-            } else {
-                logger.info("/get all students is called...")
-                logger.info('Response set=' + JSON.stringify(rows));
-                res.json(rows);
-            }
-        });
+    else{
+        res.status(404);
+        res.json({});
     }
-
 });
 
 router.post('/register', function (req, res, next) {
