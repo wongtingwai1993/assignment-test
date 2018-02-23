@@ -1,11 +1,11 @@
 var db = require('../dbconnection'); //reference of dbconnection.js  
 var TeacherStudent = {
-    
+
     getStudents: function (teacher, callback) {
         console.log('the value =' + teacher);
         console.log('the length =' + teacher.length);
         if (teacher instanceof Array) {
-            return db.query("select student_email from school_teacher_student where teacher_email in (?) group by student_email having count(student_email) = ?", [teacher,teacher.length], callback);
+            return db.query("select student_email from school_teacher_student where teacher_email in (?) group by student_email having count(student_email) = ?", [teacher, teacher.length], callback);
         }
         else {
             return db.query("select student_email from school_teacher_student where teacher_email in (?)", [teacher], callback);
@@ -20,6 +20,13 @@ var TeacherStudent = {
         // console.log(result);
 
         return db.query("select student_email from school_teacher_student where suspend_flag = false and teacher_email = ? ", [teacher], callback);
+    },
+    getStudent: function (student, callback) {
+        console.log(student);
+        // var result = db.query("select ts.studentEmail from school_teacher_student ts, school_suspend_student st where ts.studentEmail != st.studentEmail and ts.teacherEmail = ? and ts.studentEmail in (?) ", [teacher, studentList], callback);
+        // console.log(result);
+
+        return db.query("select student_email from school_teacher_student where suspend_flag = false and student_email in (?) ", [student], callback);
     },
     registerStudent: function (Teacher, callback) {
         //console.log(Teacher);

@@ -127,7 +127,13 @@ router.post('/retrievefornotifications', function (req, res, next) {
             }
         }
     }
-
+    var validatedStudent = [];
+    teacherStudent.getStudent(studentEmailList, function (err, count) {
+        console.log(count);
+        validatedStudent = count;
+    });
+    logger.info(); console.log('after validate');
+    console.log(validatedStudent);
     teacherStudent.getStudentRecipients(req.body.teacher, function (err, count) {
         if (err) {
             logger.error(err);
@@ -139,14 +145,17 @@ router.post('/retrievefornotifications', function (req, res, next) {
             for (var x = 0; x < count.length; x++) {
                 bodyContent.push(count[x].student_email);
             }
-            console.log('er =' + studentEmailList);
-            for (var u = 0; u < studentEmailList.length; u++) {
-                console.log(bodyContent);
-                console.log(studentEmailList[u]);
-                if (bodyContent.indexOf(studentEmailList[u]) < 0) {
-                    bodyContent.push(studentEmailList[u]);
+
+            if (validatedStudent != []) {
+                for (var u = 0; u < validatedStudent.length; u++) {
+                    console.log('inside of validatedStudent');
+                    console.log(validatedStudent[u]);
+                    if (bodyContent.indexOf(validatedStudent[u].student_email) < 0) {
+                        bodyContent.push(validatedStudent[u].student_email);
+                    }
                 }
             }
+
             recipients['recipients'] = bodyContent;
             logger.info('Response set=' + JSON.stringify(recipients));
             res.json(recipients);
