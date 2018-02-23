@@ -3,6 +3,7 @@ var router = express.Router();
 var teacherStudent = require('../models/TeacherStudent');
 var emailUtil = require('../utils/EmailValidator');
 var logger = require("../logger");
+var HashMap = require('hashmap');
 
 // refactor to different classes when DB calls increase
 router.get('/commonstudents', function (req, res, next) {
@@ -140,22 +141,26 @@ router.post('/retrievefornotifications', function (req, res, next) {
             res.status(500);
             res.json(err);
         } else {
+            var map = new HashMap();
             var recipients = {};
             var bodyContent = [];
             for (var x = 0; x < count.length; x++) {
-                bodyContent.push(count[x].student_email);
+                map.set(count[x].student_email, count[x].student_email);
             }
 
             if (validatedStudent != []) {
                 for (var u = 0; u < validatedStudent.length; u++) {
-                    console.log('inside of validatedStudent');
-                    console.log(validatedStudent[u]);
-                    if (bodyContent.indexOf(validatedStudent[u].student_email) < 0) {
-                        bodyContent.push(validatedStudent[u].student_email);
-                    }
+                    map.set(validatedStudent[u].student_email);
                 }
             }
-
+            var bodyContent = [];
+            map.forEach(function (value, key) {
+                console.log(key);
+                console.log(value);
+                bodyContent.push(key);
+            });
+            logger.info('the map=');
+            logger.info(map);
             recipients['recipients'] = bodyContent;
             logger.info('Response set=' + JSON.stringify(recipients));
             res.json(recipients);
