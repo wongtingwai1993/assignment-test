@@ -13,6 +13,7 @@
     "debug": "~2.6.9",
     "email-validator": "^1.1.1",
     "express": "~4.15.5",
+    "hashmap": "^2.3.0",
     "jade": "~1.11.0",
     "log": "^1.4.0",
     "morgan": "~1.9.0",
