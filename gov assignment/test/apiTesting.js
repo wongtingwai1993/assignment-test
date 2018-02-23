@@ -6,20 +6,27 @@ const expect = require('chai').expect;
 chai.use(require('chai-http'));
 
 const app = require('../app.js'); // Our app
-const emailValidator = require('email-validator')
+var emailUtil = require('../utils/EmailValidator')
 
-describe('test valid email', ()=>{
-    it("should validate email", function(){
-        expect(emailValidator.validate('test@gmail.com')).equal(true); 
+describe('test valid email', () => {
+    it("email should be valid", function () {
+        expect(emailUtil.validateEmail('test@gmail.com')).equal(true);
     })
-} )
+})
 
-describe('test invalid email', ()=>{
-    it("should validate email", function(){
-        expect(emailValidator.validate('tasdasdsad')).equal(false); 
+describe('test invalid email', () => {
+    it("email should be invalid", function () {
+        expect(emailUtil.validateEmail('tasdasdsad')).equal(false);
     })
-} )
+})
 
+describe('test invalid email length', () => {
+    it("email should be invalid", function () {
+        expect(emailUtil.validateEmail('isadfjoisdjfiosjfoiasjdfiosajdfiojsdiofjsidofsiodfjiosdjfiosdjsoisdjfiosdjfiosajdfiosjadfidasjofijdsaifojsadifojsdifdsiofjsoiadjfiosadjfisjfiosadjfiodsjfoisjdjdsiofjasdiofjiosadjfiosdjfisodjf@gmail.com')).equal(false);
+    })
+})
+
+// may fail if no student under specify teacher (status will be 204)
 describe('/GET specify students by specifying teacher', () => {
     it('should return all students', function () {
         return chai.request(app)
@@ -32,6 +39,7 @@ describe('/GET specify students by specifying teacher', () => {
     });
 });
 
+// this will fail if TEST for register student is pass
 describe('/POST register a duplicate student', () => {
     it('should return empty request body', function () {
         let postRequest = {
@@ -46,7 +54,6 @@ describe('/POST register a duplicate student', () => {
             .post('/api/register')
             .send(postRequest)
             .then(function (res) {
-                expect(res.body).to.be.an('object');
                 expect(res).to.have.status(409);
             });
     });
@@ -75,22 +82,6 @@ describe('/POST register student', () => {
     });
 });
 
-describe('/POST suspend a duplicate student', () => {
-    it('should return empty body', function () {
-        let postRequest = {
-            "student": "studentTest123@gmail.com"
-        }
-        return chai.request(app)
-            .post('/api/suspend')
-            .send(postRequest)
-            .then(function (res) {
-                expect(res.body).to.be.an('object');
-                expect(res).to.have.status(409);
-            });
-    });
-});
-
-// this will fail if TEST for suspect duplicate student is pass
 describe('/POST suspend student', () => {
     it('should return request body', function () {
         let postRequest = {
