@@ -1,27 +1,29 @@
 var express = require('express');
 var router = express.Router();
-var Teacher = require('../models/Teacher');
-var emailValidator = require('email-validator');
+var TeacherStudent = require('../models/TeacherStudent');
+var emailUtil = require('../utils/EmailValidator');
 var logger = require("../logger");
 
+// refactor to different classes when DB calls increase
 router.get('/commonstudents', function (req, res, next) {
     logger.info("/common students is called...")
     logger.info("accepted query = " + JSON.stringify(req.query));
     // query string was found
     if (req.query.teacher != undefined) {
-        Teacher.getStudents(req.query.teacher, function (err, rows) {
+        TeacherStudent.getStudents(req.query.teacher, function (err, rows) {
             if (err) {
                 logger.error('error occur!' + err);
                 res.json(err);
             } else {
                 if (rows.length > 0) {
+                    logger.info(rows);
                     var students = {};
                     var bodyContent = [];
                     for (var x = 0; x < rows.length; x++) {
-                        bodyContent.push(rows[x].studentEmail);
+                        bodyContent.push(rows[x].student_email);
                     }
                     logger.info('Response set=' + JSON.stringify(bodyContent));
-                    students['students'] = JSON.stringify(bodyContent);
+                    students['students'] = bodyContent;
                     res.status(200).json(students);
                 }
                 else {
@@ -35,7 +37,7 @@ router.get('/commonstudents', function (req, res, next) {
     }
     // just an extra feature
     else {
-        Teacher.getAllStudents(function (err, rows) {
+        TeacherStudent.getAllStudents(function (err, rows) {
             if (err) {
                 logger.info("error occur" + err);
                 res.json(err);
@@ -52,10 +54,17 @@ router.get('/commonstudents', function (req, res, next) {
 router.post('/register', function (req, res, next) {
     logger.info("/register is called...");
     logger.info("request body=" + JSON.stringify(req.body));
-    Teacher.registerStudent(req.body, function (err, count) {
+    TeacherStudent.registerStudent(req.body, function (err, count) {
         // validate for the email
+        if (!emailUtil.validateEmail(req.body.teacher)) {
+            logger.error("Invalid email is found!" + req.body.teacher);
+            res.status(422);
+            res.json(req.body.teacher);
+            return;
+        }
+
         for (var x = 0; x < req.body.students.length; x++) {
-            if (!emailValidator.validate(req.body.students[x])) {
+            if (!emailUtil.validateEmail(req.body.students[x])) {
                 logger.error("Invalid email is found!" + req.body.students[x]);
                 res.status(422);
                 res.json(req.body.students[x]);
@@ -82,15 +91,17 @@ router.post('/register', function (req, res, next) {
 
 router.post('/suspend', function (req, res, next) {
     logger.info('request body=' + JSON.stringify(req.body));
-    Teacher.addSuspendStudent(req.body, function (err, count) {
+    if (!emailUtil.validateEmail(req.body.student)) {
+        res.status(422);
+        res.json({});
+        return;
+    }
+    TeacherStudent.addSuspendStudent(req.body, function (err, count) {
         if (err) {
-            if (err.code == 'ER_DUP_ENTRY') {
-                logger.error("Duplicate of entry!" + err);
-                res.status(409);
-            } else {
-                logger.error("Unknown error!" + err);
-                res.status(500);
-            }
+
+            logger.error("Unknown error!" + err);
+            res.status(500);
+
             res.json({});
         } else {
             logger.info('Response set=' + JSON.stringify(req.body));
@@ -119,8 +130,8 @@ router.post('/retrievefornotifications', function (req, res, next) {
                 res.json({});
                 return;
             }
-            else if (studentEmail.length >= 50) {
-                logger.error('Invalid email length (50)=' + studentEmail);
+            else if (studentEmail.length >= 255) {
+                logger.error('Invalid email length (255)=' + studentEmail);
                 res.status(422);
                 res.json({});
                 return;
@@ -137,7 +148,7 @@ router.post('/retrievefornotifications', function (req, res, next) {
         }
     }
 
-    Teacher.getStudentRecipients(req.body.teacher, function (err, count) {
+    TeacherStudent.getStudentRecipients(req.body.teacher, function (err, count) {
         if (err) {
             logger.error(err);
             res.status(500);
@@ -146,7 +157,7 @@ router.post('/retrievefornotifications', function (req, res, next) {
             var recipients = {};
             var bodyContent = [];
             for (var x = 0; x < count.length; x++) {
-                bodyContent.push(count[x].studentEmail);
+                bodyContent.push(count[x].student_email);
             }
             for (var u = 0; u < studentEmailList.length; u++) {
                 bodyContent.push(studentEmailList[u]);
