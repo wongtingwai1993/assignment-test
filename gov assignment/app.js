@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors');  
 var index = require('./routes/index');
 var users = require('./routes/users');
-var teacherRoute = require('./routes/TeacherRouter');  
+var teacherRoute = require('./routes/TeacherRouter');
+var WinsLogger = require("./logger");  
 
 var app = express();
 
@@ -30,7 +31,7 @@ app.use('/api', teacherRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  console.log('404 error here happend');
+  WinsLogger.info('404 occur')
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -42,6 +43,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
+  WinsLogger.info(err);
   res.status(err.status || 500);
   res.render('error');
 });

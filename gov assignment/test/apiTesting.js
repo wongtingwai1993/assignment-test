@@ -51,6 +51,8 @@ describe('/POST register a duplicate student', () => {
             });
     });
 });
+
+// this will fail if TEST for register a duplicate student is pass
 describe('/POST register student', () => {
     it('should return empty request body', function () {
         let postRequest = {
@@ -88,6 +90,7 @@ describe('/POST suspend a duplicate student', () => {
     });
 });
 
+// this will fail if TEST for suspect duplicate student is pass
 describe('/POST suspend student', () => {
     it('should return request body', function () {
         let postRequest = {
