@@ -1,0 +1,17 @@
+CREATE TABLE school_teacher (
+  teacher_email varchar(255) NOT NULL,
+  PRIMARY KEY (teacher_email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE school_student (
+ student_email varchar(255) NOT NULL,
+ suspend_flag boolean NOT NULL,
+ PRIMARY KEY (student_email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE school_teacher_student (
+  teacher_email varchar(255) NOT NULL,
+  student_email varchar(255) NOT NULL,
+   suspend_flag boolean NOT NULL,
+  PRIMARY KEY (teacher_email,student_email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
